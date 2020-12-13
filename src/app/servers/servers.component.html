@@ -1,0 +1,21 @@
+<h1>Server Name  {{serverName}}</h1>
+<input type="text" class="form-control" (input) = "serverNameChange($event)">
+<input type="text" class="form-control" [value]="subServerName"  [(ngModel)]="subServerName">
+<h1>Sub Server Name  {{subServerName}}</h1>
+<button class="btn btn-primary" [disabled] = "!allowNewServer" (click)="serverStatus()">
+        Add server
+      </button>
+      <h3>{{'server'}} is running on port {{portNumber}} with {{modeStatus()}}</h3>
+<app-server *ngFor="let server of servers"></app-server>
+<p>I'm also a server</p>
+
+<!-- Assignment-->
+<input type="text" class="form-control" [value]="userName" (input) = "userNameChange($event)">
+<p>{{userName}}</p>
+<button class="btn btn-primary" [disabled] = "!userNameStatus()" (click)="clearUserName()">
+        Clear
+      </button>
+
+<!--Structural directive-->
+<p *ngIf="userName;else noUser">{{userName}}</p>
+<ng-template #noUser><p>No user is there</p></ng-template>

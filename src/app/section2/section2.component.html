@@ -1,0 +1,7 @@
+<p [hidden]="!showPassword" >Secret-Password = {{password}}</p>
+<button class="btn btn-primary" (click) ='getDetails()'>Display Details
+</button>
+<div *ngFor="let instance of instances;let i = index" [ngClass]="{'background': i+1>5}">
+<p  [ngStyle]="{color: changeColor(i+1)}" >Button clicked for {{instance}} time</p>
+</div>
+
