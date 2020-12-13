@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class Section2Component implements OnInit {
   showPassword = false;
   password = "shiva@123";
-  instance = 0;
-  instances = [];
+  btnClickCounter = [];
+  
   constructor() { }
   getDetails(){
      this.showPassword = true;
-     this.instances.push(++this.instance)
+     this.btnClickCounter.push(0);
   }
-  changeColor(instance) {
-    return instance  > 5 ? "green" : "";
+  changeColor(num) {
+    return num   > 5 ? "green" : "";
   }
   ngOnInit(): void {
   }
