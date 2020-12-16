@@ -12,6 +12,22 @@
           <app-servers  
           *ngFor="let serverItem of serverItems"
           [serverElement]="serverItem">
+          <!-- <div *ngIf="serverItem.type=='server'" class="col-xs-6">
+            <div [ngStyle]="{color: 'red'}">
+                <h4> Name : {{serverItem.name}}</h4>
+                <h4> Content : {{serverItem.content}}</h4>
+                <h4>It is : {{serverItem.type}}</h4>
+            </div>
+            <h5>for checking encapsulation</h5>
+        </div>
+        <div *ngIf="serverItem.type=='blueprint'" class="col-xs-6">
+            <div [ngStyle]="{color: 'blue'}" >
+                <h4> Name : {{serverItem.name}}</h4>
+                <h4> Content : {{serverItem.content}}</h4>
+                <h4>It is : {{serverItem.type}}</h4>
+            </div>
+            <h5>for checking encapsulation</h5>
+        </div> -->
         </app-servers>
   </div>
 </div>
