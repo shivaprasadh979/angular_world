@@ -1,51 +1,101 @@
 <div class="container">
-    <div class="row">
-        <h5>for checking encapsulation</h5>
-       <hr>
-       <h4>By the normal two way binding</h4>
-        <form >
-        <div class="form-group">
-           <label for="server">Enter the server name</label>
-           <input type="text" id="server" (input)="intializeServer($event)" [(ngModel)]="newServerName" class="form-control">
-        </div>
-         <div class="form-group">
-             <label for="content">Enter the server content</label>
-             <input type="text" id="content" (input)="intializeServerContent($event)" [(ngModel)]="newServerContent" class="form-control">
-         </div>
-         <button type="button" class="btn btn-primary" (click)="addNewServer()">Add Server</button>
-         <button type="button" class="btn btn-success" (click)="addNewBluePrint()">Add Server Content</button>
-        </form>
-        <hr>
-        <h4>By using local references</h4>
-        <form >
-        <div class="form-group">
-           <label for="server2">Enter the server name</label>    
-           <input type="text" id="server2"  #newServerRef class="form-control">
-           {{newServerRef.value}}
-        </div>
-         <div class="form-group">
-             <label for="content2">Enter the server content</label>
-             <input type="text" id="content2" #newServerContentRef class="form-control">
-             {{newServerContentRef.value}}
-         </div>
-         <button type="button" class="btn btn-primary" (click)="addNewServerByRef(newServerRef,newServerContentRef)">Add Server</button>
-         <button type="button" class="btn btn-success" (click)="addNewBlueprintByRef(newServerRef,newServerContentRef)">Add Server Content</button>
-        </form>
-        <hr>
-        <h4>By using View Child</h4>
-        <form >
-        <div class="form-group">
-           <label for="server3">Enter the server name</label>    
-           <input type="text" id="server3"  #newServerRef1 class="form-control">
-           {{newServerRef1.value}}
-        </div>
-         <div class="form-group">
-             <label for="content3">Enter the server content</label>
-             <input type="text" id="content3" #newServerContentRef1 class="form-control">
-             {{newServerContentRef1.value}}
-         </div>
-         <button type="button" class="btn btn-primary" (click)="addNewServerByViewChild()">Add Server</button>
-         <button type="button" class="btn btn-success" (click)="addNewServerContentByViewChild()">Add Server Content</button>
-        </form>
-    </div>
+  <div class="row">
+    <h5>for checking encapsulation</h5>
+    <hr />
+    <h4>By the normal two way binding</h4>
+    <form>
+      <div class="form-group">
+        <label for="server">Enter the server name</label>
+        <input
+          type="text"
+          id="server"
+          name = "server"
+          [(ngModel)]="newServerName"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="content">Enter the server content</label>
+        <input
+          type="text"
+          id="content"
+          name= "content"
+          [(ngModel)]="newServerContent"
+          class="form-control"
+        />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addNewServer()">
+        Add Server
+      </button>
+      <button type="button" class="btn btn-success" (click)="addNewBluePrint()">
+        Add Server Content
+      </button>
+    </form>
+    <hr />
+    <h4>By using local references</h4>
+    <form>
+      <div class="form-group">
+        <label for="server2">Enter the server name</label>
+        <input type="text" id="server2" #newServerRef class="form-control" />
+        {{ newServerRef.value }}
+      </div>
+      <div class="form-group">
+        <label for="content2">Enter the server content</label>
+        <input
+          type="text"
+          id="content2"
+          #newServerContentRef
+          class="form-control"
+        />
+        {{ newServerContentRef.value }}
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="addNewServerByRef(newServerRef, newServerContentRef)"
+      >
+        Add Server
+      </button>
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="addNewBlueprintByRef(newServerRef, newServerContentRef)"
+      >
+        Add Server Content
+      </button>
+    </form>
+    <hr />
+    <h4>By using View Child</h4>
+    <form>
+      <div class="form-group">
+        <label for="server3">Enter the server name</label>
+        <input type="text" id="server3" #newServerRef1 class="form-control" />
+        {{ newServerRef1.value }}
+      </div>
+      <div class="form-group">
+        <label for="content3">Enter the server content</label>
+        <input
+          type="text"
+          id="content3"
+          #newServerContentRef1
+          class="form-control"
+        />
+        {{ newServerContentRef1.value }}
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="addNewServerByViewChild()"
+      >
+        Add Server
+      </button>
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="addNewServerContentByViewChild()"
+      >
+        Add Server Content
+      </button>
+    </form>
+  </div>
 </div>

@@ -1,45 +1,83 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
-  styleUrls: ['./cockpit.component.css']
+  styleUrls: ['./cockpit.component.css'],
 })
 export class CockpitComponent implements OnInit {
-   @Output('serverCreated') serverCreated = new EventEmitter<{serverName : string,serverContent : string}>();
-   @Output('blueprintCreated') blueprintCreated = new EventEmitter<{blueprintName : string,blueprintContent : string}>();
-   newServerName = '';
-    newServerContent = '';
-    @ViewChild('newServerRef1') newServerRef1 :ElementRef;
-     @ViewChild('newServerContentRef1') newServerContentRef1 :ElementRef;
-  
-  constructor() { }
+  public newServerName = '';
+  public newServerContent = '';
+  @Output('serverCreated') serverCreated = new EventEmitter<{
+    serverName: string;
+    serverContent: string;
+  }>();
+  @Output('blueprintCreated') blueprintCreated = new EventEmitter<{
+    blueprintName: string;
+    blueprintContent: string;
+  }>();
+ 
+  @ViewChild('newServerRef1') newServerRef1: ElementRef;
+  @ViewChild('newServerContentRef1') newServerContentRef1: ElementRef;
 
-  ngOnInit(): void {
-  }
-  intializeServer(event : Event){
+  constructor() {}
+
+  ngOnInit(): void {}
+  intializeServer(event: Event) {
     this.newServerName = (<HTMLInputElement>event.target).value;
   }
-  intializeServerContent(event : Event){
+  intializeServerContent(event: Event) {
     this.newServerContent = (<HTMLInputElement>event.target).value;
   }
-  addNewServer(){
- this.serverCreated.emit({serverName : this.newServerName,serverContent :this.newServerContent});   
-   }
-  addNewBluePrint(){
-  this.blueprintCreated.emit({blueprintName : this.newServerName,blueprintContent :this.newServerContent});
- }
- addNewServerByRef(newServer:HTMLInputElement,newServerContent:HTMLInputElement){
- this.serverCreated.emit({serverName :newServer.value,serverContent :newServerContent.value});   
-   }
-addNewBlueprintByRef(newServer:HTMLInputElement,newServerContent:HTMLInputElement){
-  this.blueprintCreated.emit({blueprintName : newServer.value,blueprintContent :newServerContent.value});
- }
-  addNewServerByViewChild(){
- this.serverCreated.emit({serverName : this.newServerRef1.nativeElement.value,serverContent : this.newServerContentRef1.nativeElement.value});   
-   }
- addNewServerContentByViewChild(){
- this.blueprintCreated.emit({blueprintName : this.newServerRef1.nativeElement.value,blueprintContent : this.newServerContentRef1.nativeElement.value});   
-   }
+  addNewServer() {
+    this.serverCreated.emit({
+      serverName: this.newServerName,
+      serverContent: this.newServerContent,
+    });
+  }
+  addNewBluePrint() {
+    this.blueprintCreated.emit({
+      blueprintName: this.newServerName,
+      blueprintContent: this.newServerContent,
+    });
+  }
+  addNewServerByRef(
+    newServer: HTMLInputElement,
+    newServerContent: HTMLInputElement
+  ) {
+    this.serverCreated.emit({
+      serverName: newServer.value,
+      serverContent: newServerContent.value,
+    });
+  }
+  addNewBlueprintByRef(
+    newServer: HTMLInputElement,
+    newServerContent: HTMLInputElement
+  ) {
+    this.blueprintCreated.emit({
+      blueprintName: newServer.value,
+      blueprintContent: newServerContent.value,
+    });
+  }
+  addNewServerByViewChild() {
+    console.log("entered in add new server by child function")
+    this.serverCreated.emit({
+      serverName: this.newServerRef1.nativeElement.value,
+      serverContent: this.newServerContentRef1.nativeElement.value,
+    });
+  }
+  addNewServerContentByViewChild() {
+    console.log("entered in add new server  content by child function")
+    this.blueprintCreated.emit({
+      blueprintName: this.newServerRef1.nativeElement.value,
+      blueprintContent: this.newServerContentRef1.nativeElement.value,
+    });
+  }
 }
