@@ -1,23 +1,25 @@
 <div class="fluid-container">
-    <div class="well">
-        <form action="">
-            <div class="row" >
-                <div class="col-sm-5 form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-                <div class="col-xs-2 form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" class="form-control" id="amount">
-                </div>
-            </div>
-          </form>
-            <div class="row">
-            <div class="btn-group">
-                    <button class="btn btn-success" type="button">Add</button>
-                    <button class="btn btn-warning" type="button">Delete</button>
-                    <button class="btn btn-danger" type="button">Edit</button>
-                </div>
-            </div>
+  <div class="well">
+    <form action="">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" #nameInput id="name" />
+        </div>
+        <div class="col-xs-2 form-group">
+          <label for="amount">Amount</label>
+          <input type="number" class="form-control" #amountInput id="amount" />
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="btn-group">
+        <button class="btn btn-success" type="button" (click)="onAdd()">
+          Add
+        </button>
+        <button class="btn btn-warning" type="button">Delete</button>
+        <button class="btn btn-danger" type="button">Edit</button>
+      </div>
     </div>
+  </div>
 </div>

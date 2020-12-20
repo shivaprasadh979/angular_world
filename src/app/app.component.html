@@ -1,10 +1,10 @@
 <!-- <h3>Main component working</h3> -->
-<app-header></app-header>
+<app-header (featureSelected)="onFeatureSelected($event)"></app-header>
 <div class="container">
   <div class="row">
-      <app-recipies></app-recipies>
-      <hr/>
-      <hr/>
-      <app-shopping-list></app-shopping-list>
-    </div>
+    <app-recipies *ngIf="[feature] == 'recipie'"></app-recipies>
+    <hr />
+    <hr />
+    <app-shopping-list *ngIf="[feature] != 'recipie'"></app-shopping-list>
+  </div>
 </div>
