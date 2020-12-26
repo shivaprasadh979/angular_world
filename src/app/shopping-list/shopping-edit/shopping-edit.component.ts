@@ -1,31 +1,32 @@
 import {
   Component,
-  ElementRef,
-  EventEmitter,
   OnInit,
-  Output,
-  ViewChild,
+  ElementRef,
+  ViewChild
 } from '@angular/core';
-import { Ingrediant } from 'src/app/shared/ingrediant.model';
+
+import { Ingredient } from '../../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css'],
+  styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {
-  @ViewChild('nameInput') nameInputRef: ElementRef;
-  @ViewChild('amountInput') amountInputRef: ElementRef;
-  @Output('ingradientAdded') ingradientAdded = new EventEmitter<Ingrediant>();
-  constructor() {}
+  @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
+  @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef;
 
-  ngOnInit(): void {}
-  onAdd() {
-    const igName = this.nameInputRef.nativeElement.value;
-    const igAmount = this.amountInputRef.nativeElement.value;
-    console.log(igName, ' ', igAmount);
-    const newIngradient = new Ingrediant(igName, igAmount);
-    console.log(newIngradient);
-    this.ingradientAdded.emit(newIngradient);
+  constructor(private slService: ShoppingListService) { }
+
+  ngOnInit() {
   }
+
+  onAddItem() {
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value;
+    const newIngredient = new Ingredient(ingName, ingAmount);
+    this.slService.addIngredient(newIngredient);
+  }
+
 }
