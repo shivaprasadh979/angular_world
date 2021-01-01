@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Resolve,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 
 import { Recipe } from './recipe.model';
@@ -10,7 +10,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { RecipeService } from './recipe.service';
 
 @Injectable({ providedIn: 'root' })
-export class RecipesResolverService implements Resolve<Recipe[]> {
+export class RecipesResolverService implements Resolve<Recipe[] | boolean> {
   constructor(
     private dataStorageService: DataStorageService,
     private recipesService: RecipeService
@@ -20,7 +20,7 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
     const recipes = this.recipesService.getRecipes();
 
     if (recipes.length === 0) {
-      return this.dataStorageService.fetchRecipes();
+      return this.recipesService.getRecipes();
     } else {
       return recipes;
     }
