@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -26,7 +26,8 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCk9QJ-OuB_cbDdrJNxq7bHui8kd9yWFT0',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          environment.auth_key,
         {
           email: email,
           password: password,
@@ -49,7 +50,8 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCk9QJ-OuB_cbDdrJNxq7bHui8kd9yWFT0',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+          environment.auth_key,
         {
           email: email,
           password: password,
@@ -144,3 +146,6 @@ export class AuthService {
     return throwError(errorMessage);
   }
 }
+// 1//0gzLSJ6v46J6BCgYIARAAGBASNwF-L9Iraxd80y2dtcoQRGruUPqRqrUrIWWUuhnEBuPd9OAZFZdlIaaCZAHJKLzxruy1b_fRK8A
+
+// Example: firebase deploy --token "$FIREBASE_TOKEN"
